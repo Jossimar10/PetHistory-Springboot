@@ -26,4 +26,5 @@ public class Vacunas {
 
     @Column(name = "Duracion", length = 255)
     private String duracion;
+    
 }
