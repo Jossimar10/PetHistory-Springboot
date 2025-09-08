@@ -22,7 +22,7 @@ public class ProcedimientoHistoriaClinica {
     @Column(name = "IdHistoria", nullable = false)
     private Integer idHistoria;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 500, nullable = false)
     private String anotaciones;
 
     @Column(name = "usuarioDoc", nullable = false)

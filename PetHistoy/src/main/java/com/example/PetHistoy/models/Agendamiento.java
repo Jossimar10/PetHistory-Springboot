@@ -1,5 +1,8 @@
 package com.example.PetHistoy.models;
 
+import java.security.Timestamp;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,26 +17,28 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 
-public class Vacunas {
+public class Agendamiento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private Long IdVacuna;
-
-    @Column(length = 50, nullable = false)
-    private String vacuna;
+    private Long IdCita;
 
     @Column(nullable = false)
-    private Integer IdEspecie;
+    private Timestamp fecAg;
+
+    @Column(name = "fecAsi", nullable = false)
+    private LocalDateTime fecAsi;
 
     @Column(nullable = false)
-    private Integer costo;
+    private Long IdMascota;
 
-    @Column(name = "Dosis", length = 255)
-    private String dosis;
+    @Column(nullable = false)
+    private Long IdEstado;
 
-    @Column(name = "Duracion", length = 255)
-    private String duracion;
-    
+    @Column(nullable = false)
+    private Long IdProcedimiento;
+
+    @Column(nullable = false)
+    private Long IdVet;
 }

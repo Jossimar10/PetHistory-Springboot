@@ -2,8 +2,6 @@ package com.example.PetHistoy.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,13 +12,15 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 
-public class Especie {
+public class UsuarioRoles {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long IdEspecie;
+    @Column(name = "UsuarioDoc", nullable = false)
+    private Long usuarioDoc;  
 
-    @Column(length = 30, nullable = false)
-    private String especie;
+    @Column(name = "VeterinariasIdVet", nullable = false)
+    private Long veterinariasIdVet;
+
+    @Column(name = "IdRol", nullable = false)
+    private Integer idRol;  
 }

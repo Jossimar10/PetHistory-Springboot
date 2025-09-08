@@ -56,6 +56,6 @@ public class Usuario {
     private Integer IdRol;
 
     @Column(nullable = false, length = 50)
-    private String contraseñaCorreoUsuario;
+    private String ContraseñaCorreoUsuario;
 
 }

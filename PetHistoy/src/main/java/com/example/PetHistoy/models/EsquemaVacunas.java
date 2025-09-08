@@ -1,11 +1,12 @@
 package com.example.PetHistoy.models;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,14 +16,27 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 
-@Table(name = "Color")
-public class Color {
+public class EsquemaVacunas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private Long IdColor;
+    private Long IdEsquema;
 
-    @Column(length = 30, nullable = false)
-    private String color;
+    @Column(name = "Dosis", length = 255)
+    private String dosis;
+
+    @Column(name = "fecVacuna", nullable = false)
+    private LocalDateTime fecVacuna;
+
+    @Column(nullable = false)
+    private Long IdVacuna;
+
+    @Column(nullable = false)
+    private Long IdMascota;
+
+    @Column(name = "UsuarioDoc")
+    private Long usuarioDoc;
+
+
 }

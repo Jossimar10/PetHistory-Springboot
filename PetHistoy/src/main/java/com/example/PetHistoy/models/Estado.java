@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Getter
+
 @Table(name = "Estado")
 public class Estado {
 

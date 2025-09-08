@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,14 +14,17 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 
-@Table(name = "Color")
-public class Color {
+public class Raza {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private Long IdColor;
+    private Long IdRaza;
 
     @Column(length = 30, nullable = false)
-    private String color;
+    private String raza;
+
+     @Column(nullable = false)
+    private Integer IdEspecie;
+
 }
