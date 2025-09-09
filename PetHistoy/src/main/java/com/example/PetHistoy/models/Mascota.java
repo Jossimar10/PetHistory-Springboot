@@ -24,9 +24,6 @@ public class Mascota {
     private Long IdMascota;
 
     @Column(length = 50, nullable = false)
-    private String nombre;
-
-    @Column(length = 50, nullable = false)
     private String nom;
 
     @Column(nullable = false)
