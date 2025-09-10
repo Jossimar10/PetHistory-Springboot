@@ -1,61 +1,49 @@
 package com.example.PetHistoy.models;
 
-import java.math.BigInteger;
 import java.sql.Date;
+import java.util.List;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Getter
-@Table(name = "Usuario")
+@Data
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private BigInteger Doc;
-
-    @Column(name = "TipoDoc", nullable = false)
-    private Integer tipoDoc;
-
-    @Column(length = 20, nullable = false)
+    private Long doc;
     private String nom;
-
-    @Column(length = 20, nullable = false)
     private String ape1;
-
-    @Column(length = 20, nullable = false)
     private String ape2;
-
-    @Column(nullable = false, length = 20)
-    private BigInteger tel;
-
-    @Column(nullable = false)
-    private Integer contrato;
-
-    @Column(nullable = false, length = 50)
+    private Long tel;
+    private Long contrato;
     private String dir;
-
-    @Column(name = "Correo", length = 100)
-    private String correo;
-
-    @Column(nullable = false)
     private Date fecNac;
 
-    @Column(nullable = false)
-    private Integer IdRol;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "idTipo", foreignKey = @ForeignKey(name = "FK_Usuario_1"))
+    private TipoDoc tipoDoc;
 
-    @Column(nullable = false, length = 50)
-    private String ContraseñaCorreoUsuario;
+    @OneToMany(mappedBy = "usuario")
+    private List<UsuarioRoles> roles;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "correo", referencedColumnName = "correo", foreignKey = @ForeignKey(name = "FK_Correo"))
+    private Cuenta cuenta;
+    
 
 }
