@@ -1,26 +1,19 @@
 package com.example.PetHistoy.models;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Table;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Getter
-
+@Table(name = "Especie")
 public class Especie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long IdEspecie;
-
-    @Column(length = 30, nullable = false)
+    private Long idEspecie;
     private String especie;
 }

@@ -1,47 +1,49 @@
 package com.example.PetHistoy.models;
 
 import java.security.Timestamp;
+import java.sql.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Getter
+@Data
 
 public class Mascota {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long IdMascota;
-
-    @Column(length = 50, nullable = false)
-    private String nom;
-
-    @Column(nullable = false)
-    private Timestamp fecNac;
-
-    @Column(nullable = false)
-    private Integer idColor;
-
-    @Column(nullable = false)
-    private Integer idEsquema;
-
-    @Column(name = "Foto", length = 255)
+    private Long idMascota;
+    private String nombre;
+    private Date fecNam;
     private String foto;
 
-    @Column(name = "UsuarioDoc")
-    private Long usuarioDoc;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "color", foreignKey = @ForeignKey(name = "FK_id_Color"))
+    private Color color;
 
-    @Column(name = "IdRaza")
-    private Integer idRaza;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Usuario", foreignKey = @ForeignKey(name = "FK_Usuario_3"))
+    private Usuario usuario;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "raza", foreignKey = @ForeignKey(name = "FK_id_Raza"))
+    private Raza raza;
+
+    @OneToOne(mappedBy = "mascota")
+    private HistoriaClinica historiaClinica;
+
 
 }

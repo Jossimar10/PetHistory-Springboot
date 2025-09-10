@@ -1,6 +1,5 @@
 package com.example.PetHistoy.dto;
 
-import java.security.Timestamp;
 import java.sql.Date;
 
 import jakarta.validation.constraints.NotNull;

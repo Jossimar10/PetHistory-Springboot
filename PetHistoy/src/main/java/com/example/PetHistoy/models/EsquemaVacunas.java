@@ -1,42 +1,41 @@
 package com.example.PetHistoy.models;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Getter
-
+@Data
 public class EsquemaVacunas {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long IdEsquema;
-
-    @Column(name = "Dosis", length = 255)
+    private Date fecVacu;
     private String dosis;
+    @EmbeddedId
+    private EsquemasVacunasId id = new EsquemasVacunasId();
 
-    @Column(name = "fecVacuna", nullable = false)
-    private LocalDateTime fecVacuna;
+    @ManyToOne
+    @MapsId("idVacuna")
+    @JoinColumn(name = "Vacuna", foreignKey = @ForeignKey(name = "FK_vacu"))
+    private Vacunas vacunas;
 
-    @Column(nullable = false)
-    private Long IdVacuna;
+    @ManyToOne
+    @MapsId("idMascota")
+    @JoinColumn(name = "Mascota", foreignKey = @ForeignKey(name = "FK_masc"))
+    private Mascota mascota;
 
-    @Column(nullable = false)
-    private Long IdMascota;
-
-    @Column(name = "UsuarioDoc")
-    private Long usuarioDoc;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Usuario", foreignKey = @ForeignKey(name = "FK_Usuario_0"))
+    private Usuario usuario;
 
 
 }

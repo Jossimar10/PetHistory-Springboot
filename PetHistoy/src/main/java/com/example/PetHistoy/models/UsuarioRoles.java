@@ -1,26 +1,36 @@
 package com.example.PetHistoy.models;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Getter
-
+@Data
 public class UsuarioRoles {
+    @EmbeddedId
+    private UsuarioRolId id = new UsuarioRolId();
 
-    @Id
-    @Column(name = "UsuarioDoc", nullable = false)
-    private Long usuarioDoc;  
+    @ManyToOne
+    @MapsId("idDoc")
+    @JoinColumn(name = "Doc", foreignKey = @ForeignKey(name = "FK_doc"))
+    private Usuario usuario;
 
-    @Column(name = "VeterinariasIdVet", nullable = false)
-    private Long veterinariasIdVet;
+    @ManyToOne
+    @MapsId("idRol")
+    @JoinColumn(name = "Rol", foreignKey = @ForeignKey(name ="FK_id_rol"))
+    private Rol rol;
 
-    @Column(name = "IdRol", nullable = false)
-    private Integer idRol;  
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "idVet", foreignKey = @ForeignKey(name ="FK_idVet"))
+    private Veterinaria veterinaria;
+
+
 }

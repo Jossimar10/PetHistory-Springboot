@@ -2,38 +2,31 @@ package com.example.PetHistoy.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Getter
-
+@Data
 public class Vacunas {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long IdVacuna;
+    private Long idVacuna;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 11)
     private String vacuna;
-
-    @Column(nullable = false)
-    private Integer IdEspecie;
-
-    @Column(nullable = false)
+    @Column(length = 50)
     private Integer costo;
-
-    @Column(name = "Dosis", length = 255)
+    @Column(length = 11)
     private String dosis;
-
-    @Column(name = "Duracion", length = 255)
+    @Column(length = 255)
     private String duracion;
-    
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "idEspecie", foreignKey = @ForeignKey(name = "FK_Id_Especie"))
+    private Especie especie;
 }
