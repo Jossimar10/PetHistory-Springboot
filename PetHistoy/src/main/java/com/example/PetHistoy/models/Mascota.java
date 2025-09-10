@@ -1,9 +1,7 @@
 package com.example.PetHistoy.models;
 
-import java.security.Timestamp;
 import java.sql.Date;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;

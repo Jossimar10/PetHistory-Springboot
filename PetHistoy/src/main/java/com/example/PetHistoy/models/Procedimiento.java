@@ -20,7 +20,7 @@ public class Procedimiento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdProcedimiento;
+    private Long idProcedimiento;
 
     private String procedimiento;
     private Integer costo;
